@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.6rem;
+}
+
+/* Card principal */
+main {
+  width: 100%;
+  max-width: 34rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  padding: 2rem 2rem;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+/* Cabeçalho */
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .8rem;
+  margin-bottom: 1.4rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.03em;
+}
+
+.counter {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #9b9baf;
+  white-space: nowrap;
+}
+
+/* Formulário */
+.add-task-form {
+  display: flex;
+  gap: .6rem;
+  margin-bottom: 1.2rem;
+}
+
+.add-task-form input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 1.3rem;
+  padding: .7rem 1rem;
+  border: .15rem solid #e8e8f0;
+  border-radius: .7rem;
+  outline: none;
+  color: #1a1a2e;
+  background: #f8f8fc;
+  transition: border-color .2s, background .2s;
+}
+
+.add-task-form input::placeholder {
+  color: #b0b0c3;
+}
+
+.add-task-form input:focus {
+  border-color: #667eea;
+  background: #fff;
+}
+
+.add-task-form button {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: .7rem 1.2rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  border-radius: .7rem;
+  cursor: pointer;
+  transition: opacity .2s, transform .1s;
+  white-space: nowrap;
+}
+
+.add-task-form button:hover {
+  opacity: .9;
+}
+
+.add-task-form button:active {
+  transform: scale(.97);
+}
+
+.btn-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+/* Lista */
+.todo-list-section {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+#todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  max-height: 18rem;
+  overflow-y: auto;
+  padding-right: .3rem;
+}
+
+#todo-list::-webkit-scrollbar {
+  width: .4rem;
+}
+
+#todo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#todo-list::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 1rem;
+}
+
+/* Item da tarefa */
+#todo-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+  padding: .7rem 1rem;
+  background: #f8f8fc;
+  border-radius: .7rem;
+  border: .15rem solid transparent;
+  transition: background .2s, border-color .2s, opacity .2s;
+}
+
+#todo-list li:hover {
+  border-color: #e0e0f0;
+}
+
+#todo-list li.checked {
+  background: #f0f0f8;
+  opacity: .7;
+}
+
+/* Label e checkbox customizado */
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  flex: 1;
+  cursor: pointer;
+}
+
+.task-label input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: .4rem;
+  border: .15rem solid #d0d0e0;
+  background: #fff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s;
+  position: relative;
+}
+
+.custom-checkbox::after {
+  content: '';
+  width: .4rem;
+  height: .75rem;
+  border: .15rem solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) scale(0);
+  transition: transform .15s ease;
+  margin-bottom: .15rem;
+}
+
+.task-label input:checked ~ .custom-checkbox {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: transparent;
+}
+
+.task-label input:checked ~ .custom-checkbox::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.task-text {
+  font-size: 1.3rem;
+  color: #1a1a2e;
+  transition: color .2s;
+}
+
+#todo-list li.checked .task-text {
+  text-decoration: line-through;
+  color: #a0a0b8;
+}
+
+/* Botão remover individual */
+.remove-btn {
+  width: 2.1rem;
+  height: 2.1rem;
+  background: transparent;
+  color: #c0c0d0;
+  border: .15rem solid #e0e0f0;
+  border-radius: .5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: background .2s, color .2s, border-color .2s;
+}
+
+.remove-btn:hover {
+  background: #fee2e2;
+  color: #e64c3c;
+  border-color: #fca5a5;
+}
+
+/* Rodapé da lista */
+.list-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clear-btn {
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 500;
+  padding: .5rem 1.1rem;
+  background: transparent;
+  color: #e64c3c;
+  border: .15rem solid #fca5a5;
+  border-radius: .6rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.clear-btn:hover {
+  background: #fee2e2;
+}
+
+/* Estado vazio */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8rem;
+  padding: 2rem 0;
+  color: #b0b0c3;
+}
+
+.empty-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea22, #764ba222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #667eea;
+}
+
+.empty-state p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
